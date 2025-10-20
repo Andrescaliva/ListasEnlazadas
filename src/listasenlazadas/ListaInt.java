@@ -29,14 +29,14 @@ public class ListaInt {
 	public void agregarAtras(int n){
 		NodoInt nuevo = new NodoInt(n);
 		
-		if (this.primero == null)
+		if (this.primero == null){
 			this.primero = nuevo;
-
+		}
 		else {
 			NodoInt actual = this.primero;
-			while (actual.siguiente != null)
+			while (actual.siguiente != null) {
 				actual = actual.siguiente;
-
+			}
 			actual.siguiente = nuevo;
 		}
 	 }
@@ -96,6 +96,50 @@ public class ListaInt {
 			actual=actual.siguiente;
 		}
 		return false;
+	}
+	
+	public void agregarEntrePares(int e) {
+		NodoInt actual=this.primero;
+		while(actual!=null&&actual.siguiente!=null) {
+			if(actual.elemento%2==0&&actual.siguiente.elemento%2==0) {
+				NodoInt nuevo=new NodoInt(e);
+				nuevo.siguiente=actual.siguiente;
+				actual.siguiente=nuevo;
+				actual=actual.siguiente.siguiente;
+			}else {
+				actual=actual.siguiente;
+			}
+		}
+	}
+	
+	public void swap(int i, int j) {
+		int posicion=0;
+		NodoInt nodoI=null;
+		NodoInt nodoJ=null;
+		NodoInt actual=this.primero;
+		while(actual!=null) {
+			if(posicion==i) {
+				nodoI=actual;
+			}
+			if(posicion==j) {
+				nodoJ=actual;
+			}
+			posicion++;
+			actual=actual.siguiente;
+		}
+		if(nodoI!=null&&nodoJ!=null) {
+			int aux=nodoI.elemento;
+			nodoI.elemento=nodoJ.elemento;
+			nodoJ.elemento=aux;
+		}
+	}
+	
+	public void invertir() {
+	      NodoInt actual = this.primero;
+	      while (actual != null&&actual.siguiente!=null){
+	    	 this.agregarAdelante(actual.siguiente.elemento);
+	    	 actual.siguiente=actual.siguiente.siguiente;
+	      }
 	}
 
 }

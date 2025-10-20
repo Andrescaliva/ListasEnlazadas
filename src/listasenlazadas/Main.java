@@ -4,20 +4,17 @@ public class Main {
 
 	public static void main(String[] args) {
 		ListaInt lista=new ListaInt();
+		lista.agregarAtras(2);
+		
+		lista.agregarAtras(4);
+		lista.agregarAtras(5);		
+		lista.agregarAtras(8);
+		lista.agregarAtras(10);	
+		lista.agregarEntrePares(7);
 		lista.imprimir();
-		lista.agregarAdelante(0);
+		lista.swap(2, 4);
 		lista.imprimir();
-		lista.agregarAdelante(2);
-		lista.imprimir();
-		lista.agregarAdelante(15);
-		lista.imprimir();
-		lista.agregarAdelante(15);
-		lista.imprimir();
-		lista.agregarAdelante(15);
-		lista.imprimir();
-		lista.agregarAtras(15);
-		lista.imprimir();
-		lista.quitarTodos(15);
+		lista.invertir();
 		lista.imprimir();
 
 	}
