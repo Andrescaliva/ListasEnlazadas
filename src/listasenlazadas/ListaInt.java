@@ -52,6 +52,16 @@ public class ListaInt {
 	      return cantidad;
 	  }
 	
+	public int suma() {
+		int sumaNodo=0;
+		NodoInt actual=this.primero;
+		while(actual!=null) {
+			sumaNodo=sumaNodo+actual.elemento;
+			actual=actual.siguiente;
+		}
+		return sumaNodo;
+	}
+	
 	public void quitar(int n){     
 
 		   if (this.primero != null && this.primero.elemento == n) {
@@ -140,6 +150,25 @@ public class ListaInt {
 	    	 this.agregarAdelante(actual.siguiente.elemento);
 	    	 actual.siguiente=actual.siguiente.siguiente;
 	      }
+	}
+	
+	public void acomodarRemoverDivisible() {
+		while(primero!=null&&primero.elemento%7==0) { //O(1)
+			primero=primero.siguiente;
+		}
+		NodoInt actual=this.primero;
+		while(actual!=null&&actual.siguiente!=null) { // O(n)
+			if(actual.siguiente.elemento%5==0) {
+				agregarAdelante(actual.siguiente.elemento);
+				actual.siguiente=actual.siguiente.siguiente;
+			}
+			else if(actual.siguiente.elemento%7==0) {
+				actual.siguiente=actual.siguiente.siguiente;
+			}
+			else {
+				actual=actual.siguiente;
+			}
+		}
 	}
 
 }

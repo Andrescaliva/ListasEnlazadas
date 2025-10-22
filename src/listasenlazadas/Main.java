@@ -16,6 +16,10 @@ public class Main {
 		lista.imprimir();
 		lista.invertir();
 		lista.imprimir();
+		System.out.println(lista.largo());
+		System.out.println(lista.suma());
+		lista.acomodarRemoverDivisible();
+		lista.imprimir();
 
 	}
 
