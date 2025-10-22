@@ -170,5 +170,40 @@ public class ListaInt {
 			}
 		}
 	}
+	
+	public ListaInt extraerPares() {
+		ListaInt lista = new ListaInt();
+		NodoInt ultimo=null;
+		//Extrae el comienzo de la lista
+		while(this.primero!=null&&this.primero.elemento%2==0) {
+			NodoInt nuevo=new NodoInt(this.primero.elemento);
+			if(lista.primero==null) {
+				lista.primero=null;
+				ultimo=nuevo;
+			}
+			else {
+				ultimo.siguiente=nuevo;
+				ultimo=nuevo;
+			}
+			this.primero=this.primero.siguiente;
+		}
+		NodoInt actual=this.primero;
+		while(actual!=null&&actual.siguiente!=null) {
+			if(actual.siguiente.elemento%2==0) {
+				NodoInt nuevo=new NodoInt(actual.siguiente.elemento);
+				if(lista.primero==null) {
+					lista.primero=nuevo;
+				}else {
+					ultimo.siguiente=nuevo;
+				}
+				ultimo=nuevo;
+				actual.siguiente=actual.siguiente.siguiente;
+			}
+			else {
+				actual=actual.siguiente;
+			}
+		}
+		return lista;
+	}
 
 }
