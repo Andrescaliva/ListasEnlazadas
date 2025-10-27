@@ -205,5 +205,47 @@ public class ListaInt {
 		}
 		return lista;
 	}
+	
+	public int sumatoriaDesde(int pos) {
+		int suma=0;
+		int posicion=0;
+		NodoInt actual=this.primero;
+		while(actual!=null) {
+			if(posicion>=pos) {
+				suma+=actual.elemento;
+				posicion++;
+			}
+			actual=actual.siguiente;
+			posicion++;
+			
+		}
+		return suma;
+	}
+	
+	
+	public int duplicarDivisores(int pos) {
+		int suma=this.sumatoriaDesde(pos);
+		int posActual=0;
+		int cantDuplicados=0;
+		NodoInt actual=this.primero;
+		while(actual!=null) {
+			if(posActual<pos) {
+				actual=actual.siguiente;
+				posActual++;
+			}
+			else if(posActual>=pos&&suma%actual.elemento==0) {
+				NodoInt nuevo= new NodoInt(actual.elemento);
+				nuevo.siguiente=actual.siguiente;
+				actual.siguiente=nuevo;
+				actual=actual.siguiente.siguiente;
+				cantDuplicados++;
+			}
+			else{
+				actual=actual.siguiente;
+			}
+			posActual++;
+		}
+		return cantDuplicados;
+	}
 
 }
