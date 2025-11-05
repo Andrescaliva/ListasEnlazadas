@@ -61,6 +61,17 @@ public class ListaInt {
 		}
 		return sumaNodo;
 	}
+
+	public boolean estaOrdenada(){
+		NodoInt actual=this.primero;
+		while(actual!=null&&actual.siguiente!=null){
+			if(actual.elemento<actual.siguiente.elemento){
+				return false;
+			}
+			actual=actual.siguiente;
+		}
+		return true;
+	}
 	
 	public void quitar(int n){     
 
